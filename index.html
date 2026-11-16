@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Irfan — Cloud & DevOps Engineer</title>
+<meta name="description" content="Muhammad Irfan — Cloud Engineer working with Azure, Terraform, Kubernetes (AKS) and Azure DevOps. Based in Islamabad, Pakistan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#06090d; --panel:rgba(14,19,26,.72); --line:rgba(120,140,165,.18); --text:#e9eef4; --muted:#93a0b1;
+    --accent:#4ade80; --accent2:#38bdf8;
+    --mono:'JetBrains Mono',ui-monospace,monospace; --sans:'Space Grotesk',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  #bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+  .vignette{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 40%,transparent 35%,rgba(6,9,13,.75) 100%)}
+  body.no3d{background:radial-gradient(ellipse at 75% 20%,#0f2a1c 0%,var(--bg) 55%)}
+  main,nav,footer{position:relative;z-index:2}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+  nav{position:sticky;top:0;z-index:10;background:rgba(6,9,13,.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:62px}
+  .logo{font-family:var(--mono);font-size:15px}
+  .logo span{color:var(--accent)}
+  nav ul{display:flex;gap:28px;list-style:none;font-size:14px;color:var(--muted)}
+  nav ul a:hover{color:var(--text)}
+
+  .hero{min-height:calc(100vh - 62px);display:flex;align-items:center;padding:60px 0}
+  .hero .wrap{width:100%}
+  .hero-text{max-width:600px}
+  .tag{font-family:var(--mono);font-size:13px;color:var(--accent);display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);padding:6px 12px;border-radius:99px;background:var(--panel)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+  h1{font-size:clamp(42px,7vw,80px);line-height:1.02;letter-spacing:-.03em;margin:24px 0 20px;font-weight:700}
+  h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{font-size:19px;color:#b4c0cf;max-width:560px}
+  .cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+  .btn{font-family:var(--mono);font-size:14px;padding:13px 22px;border-radius:8px;border:1px solid var(--line);background:var(--panel);transition:.2s}
+  .btn.primary{background:var(--accent);color:#06210f;border-color:var(--accent);font-weight:500}
+  .btn.primary:hover{filter:brightness(1.1)}
+  .btn:not(.primary):hover{border-color:var(--muted)}
+  .hint{margin-top:54px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+  section{padding:100px 0}
+  .label{font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:12px}
+  h2{font-size:clamp(30px,4vw,44px);letter-spacing:-.02em;line-height:1.15;margin-bottom:18px}
+  .sub{color:var(--muted);max-width:640px;font-size:17px}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+  .tilt{transform-style:preserve-3d;transition:transform .25s ease-out,border-color .25s;will-change:transform}
+  .tilt:hover{border-color:rgba(74,222,128,.45)}
+  .tilt>*{transform:translateZ(26px)}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px;perspective:1100px}
+  .stat{padding:26px 22px}
+  .stat b{display:block;font-size:38px;letter-spacing:-.02em;line-height:1.1;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{font-size:13px;color:var(--muted);font-family:var(--mono)}
+
+  .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;perspective:1100px}
+  .skill{padding:26px}
+  .skill h3{font-size:18px;margin-bottom:14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chips span{font-family:var(--mono);font-size:12.5px;color:#aab6c5;background:rgba(6,9,13,.6);border:1px solid var(--line);padding:5px 10px;border-radius:6px}
+
+  .timeline{margin-top:48px;position:relative;perspective:1400px}
+  .timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(var(--accent),var(--accent2),transparent)}
+  .job{position:relative;width:calc(50% - 34px);padding:26px 28px;margin-bottom:28px}
+  .job:nth-child(even){margin-left:calc(50% + 34px)}
+  .job::before{content:"";position:absolute;top:32px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);box-shadow:0 0 14px var(--accent)}
+  .job:nth-child(odd)::before{right:-40px}
+  .job:nth-child(even)::before{left:-40px}
+  .job .when{font-family:var(--mono);font-size:12.5px;color:var(--accent2)}
+  .job h3{font-size:20px;margin:4px 0 2px;letter-spacing:-.01em}
+  .job .org{color:var(--muted);font-size:14.5px;margin-bottom:12px}
+  .job ul{color:#b4c0cf;padding-left:18px;font-size:15px}
+  .job li{margin-bottom:6px}
+  .job.reveal{opacity:0;transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}
+  .job.reveal:nth-child(odd){transform:rotateY(28deg) translateX(-50px) translateZ(-120px)}
+  .job.reveal:nth-child(even){transform:rotateY(-28deg) translateX(50px) translateZ(-120px)}
+  .job.reveal.in{opacity:1;transform:none}
+
+  .projects{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px;perspective:1200px}
+  .project{padding:30px;display:flex;flex-direction:column}
+  .project .meta{font-family:var(--mono);font-size:12px;color:var(--accent2);margin-bottom:10px}
+  .project h3{font-size:22px;margin-bottom:10px;letter-spacing:-.01em}
+  .project p{color:#b4c0cf;font-size:15.5px;margin-bottom:18px;flex:1}
+  .project a.link{display:inline-block;font-family:var(--mono);font-size:13px;color:var(--accent);margin-top:16px}
+  .project a.link:hover{text-decoration:underline}
+
+  .certs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+  .cert{padding:20px 22px}
+  .cert b{display:block;font-size:16px;line-height:1.3}
+  .cert span{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+  .edu{margin-top:14px;padding:22px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+  .edu b{font-size:17px}
+  .edu span{font-family:var(--mono);font-size:13px;color:var(--muted)}
+
+  .contact{text-align:center;padding-bottom:130px}
+  .contact h2{font-size:clamp(34px,5vw,56px)}
+  .contact p{color:#b4c0cf;max-width:520px;margin:0 auto 34px;font-size:17px}
+  .contact .cta{justify-content:center}
+  footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);font-size:12.5px;color:var(--muted);background:rgba(6,9,13,.7)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:860px){
+    nav ul{display:none}
+    .stats{grid-template-columns:1fr 1fr}
+    .skills,.projects,.certs{grid-template-columns:1fr}
+    .timeline::before{left:5px}
+    .job,.job:nth-child(even){width:auto;margin-left:30px}
+    .job:nth-child(odd)::before,.job:nth-child(even)::before{left:-31px;right:auto}
+    .job.reveal:nth-child(odd),.job.reveal:nth-child(even){transform:translateY(22px)}
+    .job.reveal.in{transform:none}
+    section{padding:70px 0}
+    .vignette{background:rgba(6,9,13,.55)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal,.job.reveal{opacity:1!important;transform:none!important;transition:none}
+    .tilt{transition:none}
+  }
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="vignette"></div>
+
+<nav><div class="wrap">
+  <a href="#" class="logo">irfan<span>@</span>cloudops:~$</a>
+  <ul>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certs">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div></nav>
+
+<main>
+<header class="hero"><div class="wrap">
+  <div class="hero-text">
+    <span class="tag"><i class="dot"></i>Cloud Engineer · Islamabad, Pakistan</span>
+    <h1>Muhammad Irfan.<br><em>Cloud &amp; DevOps</em><br>engineer.</h1>
+    <p class="lead">I build and run Azure infrastructure — Terraform, Kubernetes on AKS and Azure DevOps pipelines — for teams shipping to production in the US, UK and Pakistan.</p>
+    <div class="cta">
+      <a href="#experience" class="btn primary">See my experience →</a>
+      <a href="#contact" class="btn">Get in touch</a>
+    </div>
+    <div class="hint">↓ scroll to fly through · move your mouse to steer</div>
+  </div>
+</div></header>
+
+<section id="about"><div class="wrap">
+  <div class="reveal">
+    <div class="label">// impact</div>
+    <h2>Infrastructure that holds under load.</h2>
+    <p class="sub">Currently a Cloud Engineer at MetaSol delivering Azure infrastructure for a global client's US and UK application migrations, and a DevOps Specialist at BNR360.</p>
+  </div>
+  <div class="stats">
+    <div class="stat card tilt reveal"><div><b>50K</b><span>concurrent users served on AKS</span></div></div>
+    <div class="stat card tilt reveal"><div><b>50%</b><span>faster deployments via CI/CD</span></div></div>
+    <div class="stat card tilt reveal"><div><b>15%</b><span>cloud cost reduction</span></div></div>
+    <div class="stat card tilt reveal"><div><b>10+</b><span>Spring Boot microservices run on AKS</span></div></div>
+  </div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <div class="reveal">
+    <div class="label">// skills</div>
+    <h2>What I work with.</h2>
+  </div>
+  <div class="skills">
+    <div class="skill card tilt reveal"><div>
+      <h3>Cloud</h3>
+      <div class="chips"><span>Azure</span><span>AWS</span><span>Oracle Cloud</span><span>Function Apps</span><span>Container Apps</span><span>APIM</span><span>Logic Apps</span><span>Data Factory</span><span>Key Vault</span><span>App Services</span></div>
+    </div></div>
+    <div class="skill card tilt reveal"><div>
+      <h3>IaC &amp; CI/CD</h3>
+      <div class="chips"><span>Terraform</span><span>Azure DevOps</span><span>GitHub Actions</span><span>Jenkins</span><span>PowerShell</span><span>Python</span><span>OIDC / managed identities</span><span>ServiceNow CAB</span></div>
+    </div></div>
+    <div class="skill card tilt reveal"><div>
+      <h3>Containers &amp; Observability</h3>
+      <div class="chips"><span>Kubernetes (AKS)</span><span>KEDA</span><span>Docker</span><span>ACR</span><span>NGINX Ingress</span><span>Azure Monitor</span><span>App Insights</span><span>Log Analytics</span></div>
+    </div></div>
+  </div>
+</div></section>
+
+<section id="experience"><div class="wrap">
+  <div class="reveal">
+    <div class="label">// experience</div>
+    <h2>Where I've worked.</h2>
+  </div>
+  <div class="timeline">
+    <article class="job card reveal">
+      <div class="when">Aug 2026 — Present · Remote, United States</div>
+      <h3>Cloud Engineer</h3>
+      <div class="org">MetaSol · Part-time</div>
+      <ul>
+        <li>Deliver Azure infrastructure for a global client's US and UK application migrations across DEV, QA, UAT and PROD using Terraform and Azure DevOps.</li>
+        <li>Provision Container Apps, Function Apps, APIM, Logic Apps, Data Factory, Storage and Key Vaults as code.</li>
+        <li>Set up Azure Monitor and Application Insights for transaction-processing Function Apps.</li>
+        <li>Run production releases through ServiceNow change management and CAB.</li>
+      </ul>
+    </article>
+    <article class="job card reveal">
+      <div class="when">Oct 2024 — Present</div>
+      <h3>DevOps Specialist</h3>
+      <div class="org">BNR360</div>
+      <ul>
+        <li>Automate build, test and release with Azure DevOps pipelines and PowerShell/Python scripts.</li>
+        <li>Manage Kubernetes workloads with event-driven autoscaling (KEDA).</li>
+        <li>Build Dataverse ↔ Azure integrations for high-volume record processing.</li>
+      </ul>
+    </article>
+    <article class="job card reveal">
+      <div class="when">Jan 2026 — Apr 2026 · Remote, United States</div>
+      <h3>DevOps Engineer</h3>
+      <div class="org">MetaSol</div>
+      <ul>
+        <li>Supported 10+ Java Spring Boot microservices on AKS and took 3 more from first deployment through UAT to production.</li>
+        <li>Built Azure DevOps CI/CD pipelines with service principals, managed identities and OIDC authentication.</li>
+        <li>Onboarded internal and external APIs in Azure API Management.</li>
+      </ul>
+    </article>
+    <article class="job card reveal">
+      <div class="when">May 2024 — Apr 2026 · Remote</div>
+      <h3>DevOps Engineer</h3>
+      <div class="org">BNR360 · Full-time</div>
+      <ul>
+        <li>Scaled Docker/AKS workloads to 30K–50K concurrent users on vatika.pk with NGINX Ingress and pod autoscaling.</li>
+        <li>Cut deployment time by 50% with Azure DevOps and GitHub Actions pipelines.</li>
+        <li>Reduced cloud spend by 15% through right-sizing and Reserved Instances; managed 15+ Azure VMs.</li>
+      </ul>
+    </article>
+    <article class="job card reveal">
+      <div class="when">Jan 2025 — Mar 2025 · Lahore, Pakistan</div>
+      <h3>DevOps Engineer</h3>
+      <div class="org">DuneSync · Full-time</div>
+      <ul>
+        <li>Dockerized .NET and Laravel apps; managed AWS EC2, RDS, S3, CloudFront and VPC.</li>
+        <li>Built GitHub Actions pipelines and hardened Ubuntu servers with Fail2ban and SSH-key auth.</li>
+      </ul>
+    </article>
+    <article class="job card reveal">
+      <div class="when">Nov 2024 — Jan 2025 · Remote</div>
+      <h3>DevOps Engineer Intern</h3>
+      <div class="org">Data Bitz</div>
+      <ul>
+        <li>Streamlined build and release workflows and troubleshot deployments alongside the development team.</li>
+      </ul>
+    </article>
+    <article class="job card reveal">
+      <div class="when">Feb 2024 — Aug 2024 · United States</div>
+      <h3>Automation Engineer</h3>
+      <div class="org">Integroforce · Part-time</div>
+      <ul>
+        <li>Built a full-stack map application integrated with Podio CRM, with clickable markers linking to Podio records.</li>
+        <li>Automated client workflows with Zapier and Python tooling.</li>
+      </ul>
+    </article>
+    <article class="job card reveal">
+      <div class="when">Apr 2024 — May 2024 · Remote</div>
+      <h3>Back End Developer Intern</h3>
+      <div class="org">BNR360</div>
+      <ul>
+        <li>Backend development with Django and scripting with PowerShell.</li>
+      </ul>
+    </article>
+  </div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+  <div class="reveal">
+    <div class="label">// projects</div>
+    <h2>Selected work.</h2>
+  </div>
+  <div class="projects">
+    <article class="project card tilt reveal"><div>
+      <div class="meta">Azure · Terraform · Enterprise</div>
+      <h3>US / UK Application Migration</h3>
+      <p>Production infrastructure for two regions from dedicated IaC repositories — Terraform promotion, pull requests, pipeline approvals, domain join, firewall and post-deployment configuration.</p>
+      <div class="chips"><span>Terraform</span><span>Azure DevOps</span><span>CAB</span></div>
+    </div></article>
+    <article class="project card tilt reveal"><div>
+      <div class="meta">Kubernetes · Scale</div>
+      <h3>vatika.pk on AKS</h3>
+      <p>Containerized production platform serving 30K–50K concurrent users, with NGINX Ingress, horizontal pod autoscaling and Azure Load Balancer.</p>
+      <div class="chips"><span>AKS</span><span>Docker</span><span>HPA</span><span>NGINX</span></div>
+    </div></article>
+    <article class="project card tilt reveal"><div>
+      <div class="meta">SaaS · Own product</div>
+      <h3>TableTalk — QR Menus</h3>
+      <p>A QR-code menu platform for restaurants. Backend API and frontend, hosted on Oracle Cloud, with a GitHub Actions pipeline that deploys over SSH on every push to main.</p>
+      <div class="chips"><span>Oracle Cloud</span><span>GitHub Actions</span><span>API</span></div>
+      <a class="link" href="https://tabletalk.pro" target="_blank" rel="noopener">tabletalk.pro ↗</a>
+    </div></article>
+    <article class="project card tilt reveal"><div>
+      <div class="meta">Automation · CRM</div>
+      <h3>Podio Map Application</h3>
+      <p>Interactive map that plots database records and links each marker straight to its Podio item, so the client can move between map and CRM in one click.</p>
+      <div class="chips"><span>Python</span><span>Podio</span><span>Zapier</span></div>
+    </div></article>
+  </div>
+</div></section>
+
+<section id="certs"><div class="wrap">
+  <div class="reveal">
+    <div class="label">// certifications &amp; education</div>
+    <h2>Credentials.</h2>
+  </div>
+  <div class="certs">
+    <div class="cert card reveal"><b>Kubernetes and Cloud-Native Associate (KCNA)</b><span>KodeKloud · Feb 2026</span></div>
+    <div class="cert card reveal"><b>OCI 2025 Certified Foundations Associate</b><span>Oracle · Sep 2025</span></div>
+    <div class="cert card reveal"><b>Basic Jenkins</b><span>The Linux Foundation · Jan 2025</span></div>
+    <div class="cert card reveal"><b>Python (Basic)</b><span>HackerRank · Dec 2024</span></div>
+    <div class="cert card reveal"><b>DevOps Basics</b><span>Great Learning · Jul 2024</span></div>
+    <div class="cert card reveal"><b>Zapier Tables &amp; Webhooks</b><span>Zapier · 2024</span></div>
+  </div>
+  <div class="edu card reveal"><b>Bachelor of Computer Science</b><span>The Islamia University of Bahawalpur</span></div>
+</div></section>
+
+<section id="contact" class="contact"><div class="wrap reveal">
+  <div class="label">// contact</div>
+  <h2>Let's build something reliable.</h2>
+  <p>Reach me on LinkedIn, or see what I'm working on at GitHub.</p>
+  <div class="cta">
+    <a href="https://www.linkedin.com/in/muhammad-irfan-4b5a87275/" target="_blank" rel="noopener" class="btn primary">LinkedIn →</a>
+    <a href="https://github.com/irfan-cloudops" target="_blank" rel="noopener" class="btn">GitHub</a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>© <span id="y"></span> Muhammad Irfan</span>
+  <span>three.js · deployed on vercel</span>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  document.getElementById('y').textContent = new Date().getFullYear();
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  if (!reduce && matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.tilt').forEach(function(el){
+      el.addEventListener('mousemove', function(e){
+        var r = el.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        el.style.transform = 'rotateY(' + (x * 14) + 'deg) rotateX(' + (-y * 14) + 'deg) translateZ(8px)';
+      });
+      el.addEventListener('mouseleave', function(){ el.style.transform = ''; });
+    });
+  }
+
+  var canvas = document.getElementById('bg'), renderer;
+  try {
+    if (!window.THREE) throw new Error('no three');
+    renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true, alpha: true});
+  } catch (e) { document.body.classList.add('no3d'); canvas.style.display = 'none'; return; }
+
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  var scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x06090d, 0.03);
+  var camera = new THREE.PerspectiveCamera(60, 1, 0.1, 120);
+  camera.position.z = 9;
+
+  scene.add(new THREE.AmbientLight(0x8899aa, 0.5));
+  var l1 = new THREE.PointLight(0x4ade80, 2.2, 30); l1.position.set(5, 4, 6); scene.add(l1);
+  var l2 = new THREE.PointLight(0x38bdf8, 2.0, 30); l2.position.set(-6, -3, 4); scene.add(l2);
+
+  var core = new THREE.Group(); scene.add(core);
+  var solid = new THREE.Mesh(
+    new THREE.IcosahedronGeometry(1.25, 0),
+    new THREE.MeshStandardMaterial({color: 0x10261c, emissive: 0x1c7a45, emissiveIntensity: .35, metalness: .7, roughness: .25, flatShading: true})
+  );
+  core.add(solid);
+  var shell = new THREE.LineSegments(
+    new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(2.05, 1)),
+    new THREE.LineBasicMaterial({color: 0x4ade80, transparent: true, opacity: .5})
+  );
+  core.add(shell);
+  var rings = [], sats = [];
+  [[3.0, .5, .2, 0x38bdf8], [3.5, -.9, .6, 0x4ade80], [4.0, 1.3, -.4, 0x38bdf8]].forEach(function(c, i){
+    var pivot = new THREE.Group(); pivot.rotation.set(c[1], c[2], 0); core.add(pivot);
+    var ring = new THREE.Mesh(new THREE.TorusGeometry(c[0], .01, 6, 140), new THREE.MeshBasicMaterial({color: c[3], transparent: true, opacity: .35}));
+    pivot.add(ring);
+    var orbit = new THREE.Group(); pivot.add(orbit);
+    for (var k = 0; k < 2 + i; k++) {
+      var a = (k / (2 + i)) * Math.PI * 2;
+      var sat = new THREE.Mesh(new THREE.BoxGeometry(.16, .16, .16), new THREE.MeshStandardMaterial({color: c[3], emissive: c[3], emissiveIntensity: .7}));
+      sat.position.set(Math.cos(a) * c[0], Math.sin(a) * c[0], 0); orbit.add(sat); sats.push(sat);
+    }
+    rings.push({orbit: orbit, speed: .25 + i * .12});
+  });
+
+  var N = 2600, sp = new Float32Array(N * 3);
+  for (var i = 0; i < N; i++) {
+    var r = 14 + Math.random() * 40, th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1);
+    sp[i*3] = r * Math.sin(ph) * Math.cos(th); sp[i*3+1] = r * Math.sin(ph) * Math.sin(th); sp[i*3+2] = r * Math.cos(ph);
+  }
+  var sg = new THREE.BufferGeometry(); sg.setAttribute('position', new THREE.BufferAttribute(sp, 3));
+  var stars = new THREE.Points(sg, new THREE.PointsMaterial({color: 0xa9bdd2, size: .07, transparent: true, opacity: .8, sizeAttenuation: true}));
+  scene.add(stars);
+
+  var net = new THREE.Group(); scene.add(net);
+  var M = 90, nodes = [];
+  for (var j = 0; j < M; j++) nodes.push(new THREE.Vector3((Math.random() - .5) * 34, (Math.random() - .5) * 20, -6 - Math.random() * 46));
+  var np = new Float32Array(M * 3); nodes.forEach(function(v, j){ np[j*3] = v.x; np[j*3+1] = v.y; np[j*3+2] = v.z; });
+  var ng = new THREE.BufferGeometry(); ng.setAttribute('position', new THREE.BufferAttribute(np, 3));
+  net.add(new THREE.Points(ng, new THREE.PointsMaterial({color: 0x4ade80, size: .22, transparent: true, opacity: .9})));
+  var lp = [];
+  for (var a = 0; a < M; a++) for (var b = a + 1; b < M; b++) if (nodes[a].distanceTo(nodes[b]) < 7.5) lp.push(nodes[a].x, nodes[a].y, nodes[a].z, nodes[b].x, nodes[b].y, nodes[b].z);
+  var lg = new THREE.BufferGeometry(); lg.setAttribute('position', new THREE.BufferAttribute(new Float32Array(lp), 3));
+  net.add(new THREE.LineSegments(lg, new THREE.LineBasicMaterial({color: 0x38bdf8, transparent: true, opacity: .22})));
+
+  var mx = 0, my = 0, scrollT = 0, wide = true;
+  function resize(){
+    var w = window.innerWidth, h = window.innerHeight;
+    renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+    wide = w > 860;
+  }
+  function onScroll(){
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    scrollT = max > 0 ? window.scrollY / max : 0;
+    if (reduce) render(0);
+  }
+  window.addEventListener('resize', function(){ resize(); if (reduce) render(0); });
+  window.addEventListener('scroll', onScroll, {passive: true});
+  window.addEventListener('mousemove', function(e){ mx = e.clientX / window.innerWidth - .5; my = e.clientY / window.innerHeight - .5; });
+
+  var cx = 0, cy = 0, st = 0;
+  function render(t){
+    st += (scrollT - st) * (reduce ? 1 : .06);
+    cx += (mx - cx) * .05; cy += (my - cy) * .05;
+    var side = wide ? 4.6 : 0;
+    core.position.x = side * Math.cos(st * Math.PI * 3);
+    core.position.y = (wide ? 0 : 1.2) + Math.sin(st * Math.PI * 2) * .8;
+    core.position.z = -st * 12 - (wide ? 0 : 3);
+    core.rotation.y = t * .15 + st * 5 + cx * .8;
+    core.rotation.x = t * .08 + cy * .6;
+    solid.rotation.y = -t * .4; solid.rotation.z = t * .2;
+    rings.forEach(function(r){ r.orbit.rotation.z = t * r.speed; });
+    sats.forEach(function(s){ s.rotation.x = t; s.rotation.y = t * 1.3; });
+    net.position.z = st * 40;
+    net.rotation.z = st * .5;
+    stars.rotation.y = t * .01 + st * .6; stars.rotation.x = cy * .1;
+    camera.position.x = cx * 1.4; camera.position.y = -cy * 1.0;
+    camera.lookAt(0, 0, -4);
+    renderer.render(scene, camera);
+  }
+  resize(); onScroll();
+  if (reduce) { render(0); }
+  else { (function loop(ms){ render(ms / 1000); requestAnimationFrame(loop); })(0); }
+})();
+</script>
+</body>
+</html>
